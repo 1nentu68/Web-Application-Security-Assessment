@@ -26,7 +26,7 @@ This repository contains the full report and documentation for a web application
 
 ---
 
-##  Methodolgy
+##  Methodology
 
 The assessment followed a structured, five-step methodology common in professional security testing:
 
