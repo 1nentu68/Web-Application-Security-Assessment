@@ -21,14 +21,14 @@ To provide context, JRU-PULSE is a sophisticated, web-based platform designed to
 
 As a co-author of the study, my primary contribution to the validation phase was to lead the platform's security assessment. I was responsible for moving the application from its initial development state to a hardened, secure baseline.
 
-### 🛠️ Tools and Technologies
+### Tools and Technologies
 
 *   **Security Testing:** OWASP ZAP (Zed Attack Proxy)
 *   **Environment:** XAMPP
 *   **Web Server & Configuration:** Apache, `.htaccess`
 *   **Backend:** PHP, `php.ini`
 
-### ⚙️ Methodology
+### Methodology
 
 I followed a structured, five-step methodology to ensure a thorough and repeatable assessment:
 
@@ -40,21 +40,21 @@ I followed a structured, five-step methodology to ensure a thorough and repeatab
 
 ---
 
-## 📊 Key Findings & Remediation
+## Key Findings & Remediation
 
 The initial assessment revealed several common but critical vulnerabilities. The following table details the "before and after" of the security hardening process I implemented.
 
 | Finding                       | Severity | Initial Risk & Description                          | Remediation Action Implemented                               | Validation Result            |
 | ----------------------------- | :------: | --------------------------------------------------- | ------------------------------------------------------------ | :--------------------------- |
-| **.env File Exposure**        | **High**     | Credentials file was publicly accessible in the webroot. | Relocated `.env` and blocked direct access via `.htaccess`.  | ✅ **Access Denied (403)**    |
-| **Insecure Cookies**          |  Medium  | Session cookies lacked `HttpOnly` & `SameSite` flags. | Hardened PHP session parameters to enforce secure cookie attributes. | ✅ **Secure Flags Present**   |
-| **Missing Security Headers**  |  Medium  | Lacked CSP, X-Frame-Options, and X-Content-Type-Options. | Implemented a robust Content Security Policy (CSP) and other security headers in `.htaccess`. | ✅ **Headers Enforced**       |
-| **Directory Browsing Enabled**|  Medium  | Server revealed contents of directories without index files. | Disabled directory listing (`Options -Indexes`) in `.htaccess`.      | ✅ **Access Denied (403)**    |
-| **Server Version Disclosure** |   Low    | Apache & PHP versions were exposed in HTTP headers. | Set `ServerSignature Off` & `expose_php=Off` in server configurations. | ✅ **Generic Headers Shown**  |
+| **.env File Exposure**        | **High**     | Credentials file was publicly accessible in the webroot. | Relocated `.env` and blocked direct access via `.htaccess`.  |  **Access Denied (403)**    |
+| **Insecure Cookies**          |  Medium  | Session cookies lacked `HttpOnly` & `SameSite` flags. | Hardened PHP session parameters to enforce secure cookie attributes. |  **Secure Flags Present**   |
+| **Missing Security Headers**  |  Medium  | Lacked CSP, X-Frame-Options, and X-Content-Type-Options. | Implemented a robust Content Security Policy (CSP) and other security headers in `.htaccess`. |  **Headers Enforced**       |
+| **Directory Browsing Enabled**|  Medium  | Server revealed contents of directories without index files. | Disabled directory listing (`Options -Indexes`) in `.htaccess`.      |  **Access Denied (403)**    |
+| **Server Version Disclosure** |   Low    | Apache & PHP versions were exposed in HTTP headers. | Set `ServerSignature Off` & `expose_php=Off` in server configurations. |  **Generic Headers Shown**  |
 
 ---
 
-## ✅ Final Outcome
+## Final Outcome
 
 The security hardening process was highly successful. The final validation scan with OWASP ZAP confirmed that all identified vulnerabilities were fully remediated, achieving a final report of **zero high-risk, zero medium-risk, and zero low-risk vulnerabilities.**
 
